@@ -12,6 +12,8 @@ export interface Project {
 export const profile = {
   name: "Arjun Rao",
   tagline: "CS @ UW-Madison · building desktop tools and agentic software",
+  taglineHighlight: "agentic software", // must be a substring of tagline
+  status: "Seeking summer 2027 software engineering internships",
   location: "Madison, WI",
   links: {
     github: "https://github.com/arjun-net",

@@ -1,11 +1,16 @@
 ---
 import { profile } from "../data/site";
+
+const [before, after] = profile.tagline.split(profile.taglineHighlight);
 ---
 
 <section id="top" class="hero">
   <div class="container">
+    <p class="status"><span class="dot" aria-hidden="true"></span>{profile.status}</p>
     <h1>{profile.name}</h1>
-    <p class="tagline">{profile.tagline}</p>
+    <p class="tagline">
+      {before}<span class="highlight">{profile.taglineHighlight}</span>{after}
+    </p>
     <div class="links">
       <a class="btn" href={profile.links.github} target="_blank" rel="noopener noreferrer">
         GitHub
@@ -23,33 +28,74 @@ import { profile } from "../data/site";
 
 <style>
   .hero {
-    padding-top: 64px;
-    padding-bottom: 48px;
+    position: relative;
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+
+  /* Dot grid that fades out toward the bottom; pure CSS, no image */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--color-dot) 1.2px, transparent 1.4px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 95%);
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 95%);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin-bottom: 22px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-accent);
   }
 
   h1 {
-    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
     font-weight: 800;
-    letter-spacing: -0.02em;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
 
   .tagline {
-    margin-top: 10px;
-    font-size: 1.1rem;
+    margin-top: 18px;
+    font-size: clamp(1.1rem, 2.6vw, 1.35rem);
     color: var(--color-text-muted);
-    max-width: 46ch;
+    max-width: 30ch;
+    line-height: 1.45;
   }
 
   .links {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 28px;
+    margin-top: 32px;
   }
 
   @media (max-width: 560px) {
     .hero {
-      padding-top: 40px;
+      padding-top: 52px;
+      padding-bottom: 56px;
     }
   }
 </style>

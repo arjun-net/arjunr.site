@@ -2,37 +2,41 @@
 import { featuredProject } from "../data/site";
 ---
 
-<section id="projects" class="featured">
+<section id="projects" class="featured tinted">
   <div class="container">
     <p class="eyebrow">Featured project</p>
 
-    <!--
-      TODO: Replace this placeholder box with a real screenshot or GIF, e.g.:
-      <img src="/projects/files-screenshot.png" alt={featuredProject.screenshotAlt} width="1280" height="720" loading="eager" />
-      Put the image in /public/projects/ and update the path + alt text in src/data/site.ts.
-    -->
-    <div class="screenshot-slot" role="img" aria-label={featuredProject.screenshotAlt}>
-      <span>TODO: screenshot / GIF of {featuredProject.title}</span>
-    </div>
+    <div class="layout">
+      <div class="text">
+        <h2>{featuredProject.title}</h2>
+        <p class="description">{featuredProject.description}</p>
 
-    <h2>{featuredProject.title}</h2>
-    <p class="description">{featuredProject.description}</p>
+        <ul class="tag-list">
+          {featuredProject.tech.map((t) => <li class="tag">{t}</li>)}
+        </ul>
 
-    <ul class="tag-list">
-      {featuredProject.tech.map((t) => <li class="tag">{t}</li>)}
-    </ul>
+        <div class="featured-links">
+          {featuredProject.repo && (
+            <a class="btn btn-primary" href={featuredProject.repo} target="_blank" rel="noopener noreferrer">
+              View repo
+            </a>
+          )}
+          {featuredProject.demo && (
+            <a class="btn" href={featuredProject.demo} target="_blank" rel="noopener noreferrer">
+              Live demo
+            </a>
+          )}
+        </div>
+      </div>
 
-    <div class="featured-links">
-      {featuredProject.repo && (
-        <a class="btn" href={featuredProject.repo} target="_blank" rel="noopener noreferrer">
-          View repo
-        </a>
-      )}
-      {featuredProject.demo && (
-        <a class="btn" href={featuredProject.demo} target="_blank" rel="noopener noreferrer">
-          Live demo
-        </a>
-      )}
+      <!--
+        TODO: Replace this placeholder box with a real screenshot or GIF, e.g.:
+        <img src="/projects/files-screenshot.png" alt={featuredProject.screenshotAlt} width="1280" height="720" loading="eager" />
+        Put the image in /public/projects/ and update the path + alt text in src/data/site.ts.
+      -->
+      <div class="screenshot-slot" role="img" aria-label={featuredProject.screenshotAlt}>
+        <span>TODO: screenshot / GIF of {featuredProject.title}</span>
+      </div>
     </div>
 
     <div class="learnings">
@@ -43,12 +47,20 @@ import { featuredProject } from "../data/site";
 </section>
 
 <style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 36px;
+    align-items: center;
+  }
+
   .screenshot-slot {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     border-radius: var(--radius);
     border: 1px dashed var(--color-border);
-    background: var(--color-bg-subtle);
+    background: var(--color-bg);
+    box-shadow: 8px 8px 0 var(--color-accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,36 +68,47 @@ import { featuredProject } from "../data/site";
     font-size: 0.9rem;
     text-align: center;
     padding: 16px;
-    margin-bottom: 24px;
   }
 
   h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
   }
 
   .description {
     color: var(--color-text-muted);
-    max-width: 62ch;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .featured-links {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 22px;
   }
 
   .learnings {
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--color-border);
+    margin-top: 44px;
+    padding-left: 18px;
+    border-left: 3px solid var(--color-accent);
   }
 
   .learnings p:last-child {
     color: var(--color-text-muted);
-    max-width: 62ch;
+    max-width: 66ch;
+  }
+
+  @media (max-width: 760px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .screenshot-slot {
+      order: -1;
+      box-shadow: 6px 6px 0 var(--color-accent);
+      width: calc(100% - 6px);
+    }
   }
 </style>
