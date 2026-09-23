@@ -1,0 +1,41 @@
+---
+import { skills } from "../data/site";
+---
+
+<section id="skills" class="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <ul class="skills-list">
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .skills-list li {
+    color: var(--color-text);
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+</style>

@@ -1,0 +1,11 @@
+<!-- TODO: replace this with a real 1200x630 PNG/JPG exported from a design tool,
+     then update `ogImage` in src/data/site.ts to point at it.
+     Many social platforms (e.g. Twitter/X) don't render SVG og:image tags,
+     so this SVG is a placeholder only — export a PNG before launch. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#101216" />
+  <rect x="0" y="0" width="1200" height="8" fill="#2563eb" />
+  <text x="80" y="300" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" fill="#ffffff">Arjun Rao</text>
+  <text x="80" y="360" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="30" fill="#9aa1ad">CS @ UW-Madison · building desktop tools and agentic software</text>
+  <text x="80" y="560" font-family="ui-monospace, monospace" font-size="20" fill="#6ea8fe">TODO: replace with a real 1200x630 PNG</text>
+</svg>

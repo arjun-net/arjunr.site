@@ -1,0 +1,29 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { otherProjects } from "../data/site";
+---
+
+<section id="other-projects" class="other-projects">
+  <div class="container">
+    <h2 class="section-title">Other projects</h2>
+    <div class="grid">
+      {otherProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

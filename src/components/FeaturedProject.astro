@@ -1,0 +1,91 @@
+---
+import { featuredProject } from "../data/site";
+---
+
+<section id="projects" class="featured">
+  <div class="container">
+    <p class="eyebrow">Featured project</p>
+
+    <!--
+      TODO: Replace this placeholder box with a real screenshot or GIF, e.g.:
+      <img src="/projects/files-screenshot.png" alt={featuredProject.screenshotAlt} width="1280" height="720" loading="eager" />
+      Put the image in /public/projects/ and update the path + alt text in src/data/site.ts.
+    -->
+    <div class="screenshot-slot" role="img" aria-label={featuredProject.screenshotAlt}>
+      <span>TODO: screenshot / GIF of {featuredProject.title}</span>
+    </div>
+
+    <h2>{featuredProject.title}</h2>
+    <p class="description">{featuredProject.description}</p>
+
+    <ul class="tag-list">
+      {featuredProject.tech.map((t) => <li class="tag">{t}</li>)}
+    </ul>
+
+    <div class="featured-links">
+      {featuredProject.repo && (
+        <a class="btn" href={featuredProject.repo} target="_blank" rel="noopener noreferrer">
+          View repo
+        </a>
+      )}
+      {featuredProject.demo && (
+        <a class="btn" href={featuredProject.demo} target="_blank" rel="noopener noreferrer">
+          Live demo
+        </a>
+      )}
+    </div>
+
+    <div class="learnings">
+      <p class="eyebrow">What I learned / hardest problem</p>
+      <p>{featuredProject.learnings}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshot-slot {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    border: 1px dashed var(--color-border);
+    background: var(--color-bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    color: var(--color-text-muted);
+    max-width: 62ch;
+    margin-bottom: 16px;
+  }
+
+  .featured-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .learnings {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .learnings p:last-child {
+    color: var(--color-text-muted);
+    max-width: 62ch;
+  }
+</style>

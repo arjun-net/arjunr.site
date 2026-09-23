@@ -1,0 +1,55 @@
+---
+import { profile } from "../data/site";
+---
+
+<section id="top" class="hero">
+  <div class="container">
+    <h1>{profile.name}</h1>
+    <p class="tagline">{profile.tagline}</p>
+    <div class="links">
+      <a class="btn" href={profile.links.github} target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+      <a class="btn" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      <a class="btn" href={profile.links.email}>Email</a>
+      <a class="btn btn-primary" href={profile.links.resume} target="_blank" rel="noopener noreferrer">
+        Résumé (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 48px;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .tagline {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 46ch;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 560px) {
+    .hero {
+      padding-top: 40px;
+    }
+  }
+</style>
